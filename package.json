@@ -3,6 +3,7 @@
   "version" : "0.0.1",
   "dependencies" : {
    "express" : "3.2.6",
+   "body-parser" : "latest",
    "mongojs"         : "latest",
    "async"         	 : "latest",
    "fast-csv"        : "latest",
