@@ -1,0 +1,22 @@
+{
+  "name" : "node-api-rest-example",
+  "version" : "0.0.1",
+  "dependencies" : {
+   "express" : "3.2.6",
+   "mongojs"         : "latest",
+   "async"         	 : "latest",
+   "fast-csv"        : "latest",
+   "fs"         	 : "latest",
+   "hashmap"         : "latest",
+   "neo4j"      	 : "latest",
+   "q"        		 : "latest",
+   "speedr"    		 : "latest",
+   "split"         	 : "latest",
+   "scraperjs"       : "latest",
+   "http"            : "latest",
+   "path"            : "latest"
+  },
+  "scripts"     : {
+    "start": "node server.js"
+  }
+}
