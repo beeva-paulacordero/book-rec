@@ -119,9 +119,7 @@ var recomendarPost = function(req, res){
  	}
 }
 
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
-});
+
 
 //app.get('/books/mock.json/:books', recomendarGet);
 app.post('/books/', recomendarPost);
@@ -159,3 +157,6 @@ app.get(  '/search', function ( req, res, next ){
   });
 });
 
+app.listen(3000, function() {
+  console.log("Node server running on http://localhost:3000");
+});
