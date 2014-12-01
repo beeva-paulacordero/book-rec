@@ -63,61 +63,6 @@ var crearJSON = function (req, resultado){
 	return message;
 }
 
-var recomendarGet = function(req, res){
-
- 	var libros = req.params.books;
-
- 	var collectLibros = libros.split(",");
-
- 	var resultado;
- 	var tipo = parseInt(req.params.n);
- 	//var familia = parseInt(req.params.familia);
-
- 	console.log("PARAMETRO GET: " + libro);
-
- 	/*if (collectLibros.length>0){
-
- 		var where = crearWhere(collectLibros);
-
-	 	if((tipo==1)&&(familia==1)){
-
-	 		ModelKnowledgeGraph
-	 		.consultaColeccionConFiltros(where, resultado)
-	 		.then(function(resultado) { res.send(crearJSON(resultado));})
-	 		.fail().done();
-
-	 	}else if ((tipo==1)&&(familia==0)){
-
-	 		ModelKnowledgeGraph
-	 		.consultaColeccionConFiltroTipo(where, resultado)
-	 		.then(function(resultado) { res.send(crearJSON(resultado));})
-	 		.fail().done();
-
-	 	}else if ((tipo==0)&&(familia==1)){
-
-	 		ModelKnowledgeGraph
-	 		.consultaColeccionConFiltroFamilia(where, resultado)
-	 		.then(function(resultado) { res.send(crearJSON(resultado));})
-	 		.fail().done();
-
-	 	}else if ((tipo==0)&&(familia==0)){
-	 		ModelKnowledgeGraph
-	 		.consultaColeccionSinFiltro(where, resultado)
-	 		.then(function(resultado) { res.send(crearJSON(resultado));})
-	 		.fail().done();
-
-	 	}else{
-
-	 		res.send("Error en parametros tipo/familia (0||1)");
-	 	}
-
- 	}else{
-
- 		res.send("Error al consultar el recomendador: *** Debe introducir el código de un libro ***");
-
- 	}*/
- }
-
 var recomendarPost = function(req, res){
 
  	var collectLibros = req.body.libros;
@@ -131,6 +76,8 @@ var recomendarPost = function(req, res){
 
  	if (collectLibros.length>0){
 
+ 		console.log(collectLibros);
+ 		
  		var where = crearWhere(req.body.libros);
 
 	 	if((tipo==1)&&(familia==1)){
@@ -176,8 +123,7 @@ app.listen(3000, function() {
   console.log("Node server running on http://localhost:3000");
 });
 
-//app.get('/recomienda/:libro', recomendar);
-app.get('/books/mock.json/:books', recomendarGet);
+//app.get('/books/mock.json/:books', recomendarGet);
 app.post('/books/', recomendarPost);
 
 app.get(  '/cover', function ( req, res, next ){
