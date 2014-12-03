@@ -23,9 +23,17 @@ ModelKnowledgeGraph.prototype.consultaColeccionSinFiltro= function(libros, limit
 		arrayquery = "MATCH (l:Libro)<-[r:IND1_JACCARD]->(v:Libro) \n"
 		+ "WHERE" + libros + " AND NOT (l.codigo_libro=v.codigo_libro) \n"
 		+ "RETURN SUM(r.valor) AS indice, v.codigo_libro AS id, v.nombre AS t \n"
-		+ "ORDER BY indice DESC \n"
+//		+ "ORDER BY indice DESC \n"
 		+ "LIMIT "+ limit +" \n"
 
+console.log(libros);
+//libros = '"2900000014271","2900000089091"';
+arrayquery = "START aa=node:Libro('codigo_libro:("+libros+")')\n" 
+	+ "MATCH aa<-[r:IND1_JACCARD]->(v:Libro)\n"
+	+ "WHERE NOT v.codigo_libro IN ["+ libros + "]\n"
+	+ "RETURN SUM(r.valor) AS indice, v.codigo_libro AS id, v.nombre AS t \n"
+	+ "ORDER BY indice DESC\n"
+	+ "LIMIT " + limit + "\n";
 		console.log(arrayquery);
 
 		dbneo.query(arrayquery, function(err, information){
