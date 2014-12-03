@@ -38,17 +38,17 @@ var error = function(){
 }
 
 var crearWhere = function (lista){
-	
 	var cadena = "";
 	var count = 0;
 
 	console.log("ESTA ES LA LISTA DE IDS.... " + lista + " Y SU LONGITUD: " + lista.length);
 
 	for(var i=0; i<lista.length; i++){
+		console.log(cadena);
 		if(i!==lista.length-1){
-			cadena += " l.codigo_libro='" + lista[i] + "' OR";
+			cadena += "\"" + lista[i] + "\",";
 		}else{
-			cadena += " l.codigo_libro='" + lista[i] + "'";
+			cadena += "\"" + lista[i] + "\"";
 		}
 	}
 
@@ -78,6 +78,7 @@ var recomendarPost = function(req, res){
 
  		console.log(collectLibros);
  		
+		console.log(req.body.libros);
  		var where = crearWhere(req.body.libros);
 
 	 	if((tipo==1)&&(familia==1)){
